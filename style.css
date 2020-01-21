@@ -1,6 +1,6 @@
 body{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     background-image: url(./Imagenes/nature-scene-with-igloo-ground_1308-29732.jpg);
     background-size: contain;
 }
@@ -8,4 +8,9 @@ body{
 canvas{
 
     background-color: #68d8d6;
+}
+
+button{
+    width:300px;
+    height:100px;
 }

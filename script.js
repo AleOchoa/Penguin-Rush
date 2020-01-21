@@ -214,7 +214,7 @@ function winner(){
     let w2=p2.labx===pez.labx && p2.laby===pez.laby
     if (w1===true) {
         if (w2===true) {
-            return "tie"
+            return "draw"
         }
         else {
             return "player1"
@@ -248,8 +248,30 @@ switch (winner()) {
         modifAngulo()      
         ctx.clearRect(-300,-300,600,600)
         ctx.drawImage(win,-100,-100,200,200)
+        ctx.drawImage(p1.img,(150*p1.tipo)+100,0,48,48,-45,-100,100,100)
+        ctx.font="48px serif"
+        ctx.fillStyle="red"
+        ctx.fillText('Player 1',-80,140,200)
         break;
     case 'player2':
+        clearInterval(interval) 
+        modifAngulo()      
+        ctx.clearRect(-300,-300,600,600)
+        ctx.drawImage(win,-100,-100,200,200)
+        ctx.drawImage(p2.img,(150*p2.tipo)+100,0,48,48,-35,-100,100,100)
+        ctx.font="48px serif"
+        ctx.fillStyle="red"
+        ctx.fillText('Player 2',-80,140,200)
+        break;
+    case 'draw':
+        clearInterval(interval) 
+        modifAngulo()      
+        ctx.clearRect(-300,-300,600,600)
+        ctx.drawImage(p1.img,(150*p1.tipo)+100,0,48,48,-60,-100,100,100)
+        ctx.drawImage(p2.img,(150*p2.tipo)+100,0,48,48,5,-100,100,100)
+        ctx.font="48px serif"
+        ctx.fillStyle="red"
+        ctx.fillText('Draw',-40,140,200)
         break;
     }
 }
