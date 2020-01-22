@@ -99,6 +99,54 @@ class Laberinto{
         ctx.stroke()
         ctx.closePath()
     }
+    /*draw2(labx,laby){
+        ctx.lineWidth="5px"
+        ctx.strokeStyle="#07BEB8"
+        ctx.beginPath()
+        switch(this.tablero[labx][laby]) {
+            case 1:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                break;
+            case 2:
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                break;
+            case 3:
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                break;
+            case 4:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                break;
+            case 5:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                break;
+            case 6:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+
+                break;
+
+        }
+        ctx.stroke()
+        ctx.closePath()
+    }*/
+
 }
 
 
