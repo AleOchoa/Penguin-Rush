@@ -270,8 +270,8 @@ switch (winner()) {
         interval=undefined 
         modifAngulo()      
         ctx.clearRect(-300,-300,600,600)
-        ctx.drawImage(p1.img,(150*p1.tipo)+100,0,48,48,-60,-100,100,100)
-        ctx.drawImage(p2.img,(150*p2.tipo)+100,0,48,48,5,-100,100,100)
+        ctx.drawImage(p1.img,(150*p1.tipo)+100,100,48,48,-60,-100,100,100)
+        ctx.drawImage(p2.img,(150*p2.tipo)+100,50,48,48,5,-100,100,100)
         ctx.font="48px serif"
         ctx.fillStyle="red"
         ctx.fillText('Draw',-40,140,200)

@@ -10,14 +10,61 @@ canvas{
 
     background-color: #68d8d6;
 }
+#left{
+    color: #15767C;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: space-around;
+    justify-content: center;
+    text-align: center;
+}
 
 button{
-    margin:auto 0;
-    font-size: 40px;
+    font-size: 20px;
     color:#07BEB8;
     background-color: #9CEAEF;
     border: #07BEB8 solid 2px;
     border-radius: 15px;
+    width:100px;
+    height:50px;
+}
+
+#start-button{
     width:300px;
     height:100px;
+    font-size: 40px;
+}
+
+#niveles{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+
+}
+h1,h2,h3,h4{
+    background-color: #68D8D6;
+    width: fit-content;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.comando {
+    width: 150px;
+    height:100px;
+}
+
+#right{
+    color: #15767C;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+.player{
+    width: fit-content;
+    height: fit-content;
+    margin-left:auto;
+    margin-right: auto;
+
 }
