@@ -2,6 +2,7 @@ let p1
 let p2
 let lab
 let pez
+let nivel=1
 let canvas=document.querySelector("canvas")
 let ctx=canvas.getContext("2d")
 let win=new Image()
@@ -138,43 +139,6 @@ class Player{
         }
         ctx.drawImage(this.img,(150*this.tipo)+100,tipo2*50,50,50,this.x,this.y,40,40)
     }
-     /*moveDown(){
-            this.y++
-            framesP1++
-            if (framesP1==50){
-                clearInterval(intervalP1)
-                this.laby++
-                this.moviendo=false
-            }
-    }
-    moveUp(){
-            this.y-=1
-            framesP1++
-            if (framesP1==50){
-                clearInterval(intervalP1)
-                this.laby--
-                this.moviendo=false
-            }
-    }
-    moveRight(){
-            this.x+=1
-            framesP1++
-            if (framesP1==50){
-                clearInterval(intervalP1)
-                this.labx++
-                this.moviendo=false
-            }
-    }
-    moveLeft(){
-            this.x--
-            if ((this.x-25)%50===0){
-                console.log("left")
-                clearInterval(intervalP1)
-                this.labx=labx-1
-                this.moviendo=false
-            }
-        
-    }*/
     moveLeft(){
         this.x-=50
         this.labx--
@@ -237,7 +201,7 @@ lab.draw()
 pez.draw()
 p1.draw()
 p2.draw()
-if (frames%100===0) {
+if (frames%(100*(5.5-(1.5*nivel)))===0) {
     lab.rotate()
 } 
 switch (winner()) {
@@ -370,4 +334,26 @@ function start(){
     document.getElementById("start-button").onclick = function() {
       start();
     }
+    document.getElementById("beginner").onclick = function() {
+        if (interval) return
+        nivel=1;
+        document.getElementById("nivel").innerText="Beginner"
+      }
+    document.getElementById("normal").onclick = function() {
+        if (interval) return
+        nivel=2;
+        document.getElementById("nivel").innerText="Normal"
+      }
+    document.getElementById("expert").onclick = function() {
+        if (interval) return
+        nivel=3;
+        document.getElementById("nivel").innerText="Expert"
+      }
+    
+
+    let ini=new this.Image()
+    ini.src="./Imagenes/pinguino.svg"
+    ini.onload = function(){
+        ctx.drawImage(ini, -100,-100,200,200);
+      }
   } 
