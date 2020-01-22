@@ -244,7 +244,8 @@ switch (winner()) {
     case 'no winner':
         break;
     case 'player1':
-        clearInterval(interval) 
+        clearInterval(interval)
+        interval=undefined 
         modifAngulo()      
         ctx.clearRect(-300,-300,600,600)
         ctx.drawImage(win,-100,-100,200,200)
@@ -255,6 +256,7 @@ switch (winner()) {
         break;
     case 'player2':
         clearInterval(interval) 
+        interval=undefined
         modifAngulo()      
         ctx.clearRect(-300,-300,600,600)
         ctx.drawImage(win,-100,-100,200,200)
@@ -264,7 +266,8 @@ switch (winner()) {
         ctx.fillText('Player 2',-80,140,200)
         break;
     case 'draw':
-        clearInterval(interval) 
+        clearInterval(interval)
+        interval=undefined 
         modifAngulo()      
         ctx.clearRect(-300,-300,600,600)
         ctx.drawImage(p1.img,(150*p1.tipo)+100,0,48,48,-60,-100,100,100)
@@ -292,6 +295,7 @@ function modifAngulo(){
     }
 }
 function start(){
+    if (interval) return
     ctx.restore()
     frames=0
     lab=new Laberinto()
