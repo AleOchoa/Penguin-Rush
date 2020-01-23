@@ -6,8 +6,10 @@ A multiplayer game having two penguins racing to be the first to arrive to the f
 You have to go through a maze which is rotating randomly 90°,180° or 270°. The commands are exactly the same and only the view is changing. It's a game to test your sense of direction.
 
 ## Controls
-Player 1
-![](./Images/flechas.svg)
 
-Player 2
-![](./Images/letras.svg)
+| Direction    | Player 1      | Player 2      |
+|--------------|---------------|---------------|
+| Up           | ArrowUp       |W              |
+| Down         | ArrowDown     |S              |
+| Left         | ArrowLeft     |A              |
+| Right        | ArrowRight    |D              |
