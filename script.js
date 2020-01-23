@@ -15,15 +15,73 @@ let movimientos=[[],["r"],["u"],["l"],["d"],["l","r"],["u","d"],["r","d"],["r","
 class Laberinto{
     constructor(){
         this.premio={
-            x:1,
-            y:5
+            x:0,
+            y:0
         }
         this.inicio={
-            x:6,
-            y:6
+            x:0,
+            y:0
         }
         this.angulo=0
-        this.tablero=[[7,8,7,2,7,13,8],[5,10,9,7,9,3,3],[14,6,8,10,8,1,1],[3,7,11,7,9,10,11],[7,9,10,9,7,6,11],[14,8,7,8,5,1,5],[3,10,9,10,12,9,3]]
+        this.tablero=[]
+        }
+    getLab(){
+        let opciones=[
+            //Opcion1
+            { 
+                 premio:{
+                     x:1,
+                     y:5
+                 },
+                 inicio:{
+                     x:6,
+                     y:6
+                 },
+                 tablero:[[7,8,7,2,7,13,8],[5,10,9,7,9,3,3],[14,6,8,10,8,1,1],[3,7,11,7,9,10,11],[7,9,10,9,7,6,11],[14,8,7,8,5,1,5],[3,10,9,10,12,9,3]]
+            },
+            //Opcion 2
+            { 
+                 premio:{
+                     x:3,
+                     y:4
+                 },
+                 inicio:{
+                     x:2,
+                     y:0
+                 },
+                 tablero:[[7,8,4,13,6,6,8],[5,10,8,14,8,7,9],[3,1,10,9,3,10,8],[7,11,7,8,1,7,9],[5,14,9,10,9,10,8],[5,10,8,7,8,7,9],[10,2,10,9,10,12,2]]
+            },
+            //Opcion 3
+            { 
+                 premio:{
+                     x:5,
+                     y:0
+                 },
+                 inicio:{
+                     x:3,
+                     y:6
+                 },
+                 tablero:[[7,8,7,6,6,6,8],[5,3,5,7,8,7,11],[14,6,9,3,10,9,5],[10,8,7,8,7,8,3],[4,12,9,10,9,10,8],[1,7,8,7,8,7,9],[10,9,10,9,10,12,12]]
+            },
+            //Opcion 4
+            { 
+                 premio:{
+                     x:6,
+                     y:0
+                 },
+                 inicio:{
+                     x:6,
+                     y:5
+                 },
+                 tablero:[[7,6,6,6,6,13,2],[5,4,8,7,8,10,8],[14,8,14,9,10,8,5],[5,10,9,1,7,9,5],[10,6,6,9,10,8,5],[7,8,7,8,7,9,5],[3,10,9,10,9,4,9]]
+            }
+     ]
+     let index=Math.floor(Math.random()*5)
+     this.premio.x=opciones[index].premio.x
+     this.premio.y=opciones[index].premio.y
+     this.inicio.x=opciones[index].inicio.x
+     this.inicio.y=opciones[index].inicio.y
+     this.tablero=[...opciones[index].tablero]
     }
     rotate(){
         let rota=(Math.floor((Math.random()*3)+1)*90)
@@ -38,45 +96,13 @@ class Laberinto{
         ctx.strokeStyle="#07BEB8"
         ctx.fillRect(-175,-175,350,350)
         ctx.strokeRect(-175,-175,350,350)
-        ctx.beginPath()
-        ctx.moveTo(-175,-75)
-        ctx.lineTo(-125,-75)
-        ctx.moveTo(-175,25)
-        ctx.lineTo(-125,25)
-        ctx.lineTo(-125,-25)
-        ctx.lineTo(25,-25)
-        ctx.moveTo(-25,-25)
-        ctx.lineTo(-25,25)
-        ctx.moveTo(-125,-125)
-        ctx.lineTo(-75,-125)
-        ctx.lineTo(-75,-25)
-        ctx.moveTo(-25,-75)
-        ctx.lineTo(-25,-125)
-        ctx.lineTo(25,-125)
-        ctx.lineTo(25,-175)
-        ctx.moveTo(175,-125)
-        ctx.lineTo(125,-125)
-        ctx.moveTo(175,-25)
-        ctx.lineTo(125,-25)
-        ctx.moveTo(175,125)
-        ctx.lineTo(75,125)
-        ctx.lineTo(75,75)
-        ctx.lineTo(125,75)
-        ctx.moveTo(125,25)
-        ctx.lineTo(25,25)
-        ctx.lineTo(25,125)
-        ctx.moveTo(25,75)
-        ctx.lineTo(-125,75)
-        ctx.moveTo(-75,25)
-        ctx.lineTo(-75,175)
-        ctx.moveTo(-125,125)
-        ctx.lineTo(-25,125)
-        ctx.moveTo(75,25)
-        ctx.lineTo(75,-125)
-        ctx.moveTo(125,-75)
-        ctx.lineTo(25,-75)
-        ctx.stroke()
-        ctx.closePath()
+        for (let i=0;i<7;i++)
+        {
+            for (let j=0; j<7;j++)
+            {
+                this.draw2(i,j)
+            }
+        }
 
         //medio circulo superior
         ctx.beginPath()
@@ -99,7 +125,7 @@ class Laberinto{
         ctx.stroke()
         ctx.closePath()
     }
-    /*draw2(labx,laby){
+    draw2(labx,laby){
         ctx.lineWidth="5px"
         ctx.strokeStyle="#07BEB8"
         ctx.beginPath()
@@ -107,45 +133,82 @@ class Laberinto{
             case 1:
                 ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby))
                 ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
-                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
-                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
                 break;
             case 2:
                 ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
-                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
-                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
                 ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
                 break;
             case 3:
-                ctx.moveTo(-175+(50*(labx)),-175+(50*laby+1))
-                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.moveTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
                 ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
                 ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
                 break;
             case 4:
-                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
                 ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
                 ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
-                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
                 break;
             case 5:
-                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
-                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
-                ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
-                ctx.lineTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))    
                 break;
             case 6:
-                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby+1))
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
                 ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
-                ctx.moveTo(-175+(50*(labx)),-175+(50*laby+1))
+                ctx.moveTo(-175+(50*(labx)),-175+(50*(laby+1)))
                 ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
-
+                break;
+            case 7:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                break;
+            case 8:
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                break;
+            case 9:
+                ctx.moveTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                break;
+            case 10:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                break;
+            case 11:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                break;
+            case 12:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*(laby+1)))
+                ctx.lineTo(-175+(50*(labx+1)),-175+(50*laby))
+                break;
+            case 13:
+                ctx.moveTo(-175+(50*(labx)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*(laby+1)))
+                break;
+            case 14:
+                ctx.moveTo(-175+(50*(labx+1)),-175+(50*laby))
+                ctx.lineTo(-175+(50*(labx)),-175+(50*laby))
+                break;
+            default:
                 break;
 
         }
         ctx.stroke()
         ctx.closePath()
-    }*/
+    }
 
 }
 
@@ -311,6 +374,7 @@ function start(){
     ctx.restore()
     frames=0
     lab=new Laberinto()
+    lab.getLab()
     p1=new Player(lab.inicio.x,lab.inicio.y,-175+(lab.inicio.x*50),-175+(lab.inicio.y*50),0)
     p2=new Player(lab.inicio.x,lab.inicio.y,-175+(lab.inicio.x*50),-175+(lab.inicio.y*50),1)
     pez=new Premio(lab.premio.x,lab.premio.y)
