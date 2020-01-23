@@ -13,3 +13,5 @@ You have to go through a maze which is rotating randomly 90°,180° or 270°. Th
 | Down         | ArrowDown     |S              |
 | Left         | ArrowLeft     |A              |
 | Right        | ArrowRight    |D              |
+
+![Player 1](https://github.com/AleOchoa/Penguin-Rush/blob/master/Imagenes/player1.png?raw=true)
