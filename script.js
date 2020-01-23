@@ -463,7 +463,7 @@ function start(){
       }
     
 
-    let ini=new this.Image()
+    let ini=new Image()
     ini.src="./Imagenes/pinguino.svg"
     ini.onload = function(){
         ctx.drawImage(ini, -100,-100,200,200);
