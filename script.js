@@ -3,6 +3,9 @@ let p2
 let lab
 let pez
 let nivel=1
+let audio=new Audio()
+audio.src= "./Audio/rainbows.mp3"
+audio.play()
 let canvas=document.querySelector("canvas")
 let ctx=canvas.getContext("2d")
 let win=new Image()
@@ -288,6 +291,11 @@ function winner(){
     let w1=p1.labx===pez.labx && p1.laby===pez.laby
     let w2=p2.labx===pez.labx && p2.laby===pez.laby
     if (w1===true) {
+        if (nivel===3){
+        audio.pause()
+        audio.src="./Audio/rainbows.mp3"
+        audio.play()
+        }
         if (w2===true) {
             return "draw"
         }
@@ -297,6 +305,11 @@ function winner(){
     }
     else {
         if (w2===true) {
+            if (nivel===3){
+                audio.pause()
+                audio.src="./Audio/rainbows.mp3"
+                audio.play()
+                }
             return "player2"
         }
         else {
@@ -371,6 +384,9 @@ function modifAngulo(){
 }
 function start(){
     if (interval) return
+    if (nivel===3) audio.src="./Audio/Misión imposible fail   canción flauta art. (320  kbps).mp3"
+    audio.play()
+    audio.loop=true
     ctx.restore()
     frames=0
     lab=new Laberinto()
