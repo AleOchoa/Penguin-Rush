@@ -85,7 +85,6 @@ class Laberinto{
             }
      ]
      let index=Math.floor(Math.random()*480)%4
-     index=0
      this.premio.x=opciones[index].premio.x
      this.premio.y=opciones[index].premio.y
      this.inicio.x=opciones[index].inicio.x
