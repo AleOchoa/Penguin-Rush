@@ -459,25 +459,25 @@ function movePC(){
              }
                 break;
         case 65:
-            if (p2.labx>0 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('l') && !p2.moviendo){
+            if (mode==2 && p2.labx>0 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('l') && !p2.moviendo){
             p2.direccion='l'
             p2.moveLeft()
             }
             break;
         case 87:
-               if (p2.laby>0 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('u') && !p2.moviendo){
+               if (mode==2 && p2.laby>0 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('u') && !p2.moviendo){
                p2.direccion="u"
                p2.moveUp()
             }
                break;
         case 68:
-                if (p2.labx<6 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('r') && !p2.moviendo){
+                if (mode==2 && p2.labx<6 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('r') && !p2.moviendo){
                 p2.direccion="r"
                 p2.moveRight()
              }
              break;
         case 83:
-                if (p2.laby<6 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('d') && !p2.moviendo){
+                if (mode==2 && p2.laby<6 && movimientos[lab.tablero[p2.labx][p2.laby]].includes('d') && !p2.moviendo){
                 p2.direccion="d"
                 p2.moveDown()
              }
