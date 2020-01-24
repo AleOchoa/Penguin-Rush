@@ -24,11 +24,16 @@ Goal: ![Fish](https://github.com/AleOchoa/Penguin-Rush/blob/master/Imagenes/prem
 | Left         | ArrowLeft     |A              |
 | Right        | ArrowRight    |D              |
 
+At the beginning of the game you can choose the game mode and the 
+difficulty level. If you change of mind of the settings you have to finish the game before modifying them.
+
+You can choose between playing with the computer or playing with a friend.
+
 You can choose one of the three different levels: 
 
-1) Begginers: 8 seconds between rotations.
-2) Normal: 5 seconds between rotations.
-3) Expert: 2 seconds between rotations.
+1) Begginers: 8 seconds between rotations. In single player mode the computer moves one space each 3 seconds.
+2) Normal: 5 seconds between rotations. In single player mode the computer moves one space each 2 seconds.
+3) Expert: 2 seconds between rotations and an annoying background music. In single player mode the computer moves one space each 1 seconds.
 
 The level has to be selected before starting the game, once it starts there is no chance to change it.
 

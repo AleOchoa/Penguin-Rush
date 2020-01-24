@@ -4,14 +4,14 @@ let lab
 let pez
 let nivel=1
 let audio=new Audio()
-audio.src= "./Audio/rainbows.mp3"
-audio.play()
+audio.src= "./Audio/Misión imposible fail   canción flauta art. (320  kbps).mp3"
 let canvas=document.querySelector("canvas")
 let ctx=canvas.getContext("2d")
 let win=new Image()
  win.src="./Imagenes/winner.svg"
 ctx.translate(300,300)
 ctx.save()
+let mode=2
 let interval
 let frames
 let movimientos=[[],["r"],["u"],["l"],["d"],["l","r"],["u","d"],["r","d"],["r","u"],["l","u"],["l","d"],["l","r","u"],["l","u","d"],["r","u","d"],["l","r","d"]]
@@ -26,6 +26,7 @@ class Laberinto{
             y:0
         }
         this.angulo=0
+        this.solucion=""
         this.tablero=[]
         }
     getLab(){
@@ -40,6 +41,7 @@ class Laberinto{
                      x:6,
                      y:6
                  },
+                 solucion:"lluurrulurululdldrdldluldldr",
                  tablero:[[7,8,7,2,7,13,8],[5,10,9,7,9,3,3],[14,6,8,10,8,1,1],[3,7,11,7,9,10,11],[7,9,10,9,7,6,11],[14,8,7,8,5,1,5],[3,10,9,10,12,9,3]]
             },
             //Opcion 2
@@ -52,6 +54,7 @@ class Laberinto{
                      x:2,
                      y:0
                  },
+                 solucion:"lldrdrdlldddrurdrurdrurulurululdldrdl",
                  tablero:[[7,8,4,13,6,6,8],[5,10,8,14,8,7,9],[3,1,10,9,3,10,8],[7,11,7,8,1,7,9],[5,14,9,10,9,10,8],[5,10,8,7,8,7,9],[10,2,10,9,10,12,2]]
             },
             //Opcion 3
@@ -64,6 +67,7 @@ class Laberinto{
                      x:3,
                      y:6
                  },
+                 solucion:"llluuuurruurdrdldrdldrdrurulurulurul",
                  tablero:[[7,8,7,6,6,6,8],[5,3,5,7,8,7,11],[14,6,9,3,10,9,5],[10,8,7,8,7,8,3],[4,12,9,10,9,10,8],[1,7,8,7,8,7,9],[10,9,10,9,10,12,12]]
             },
             //Opcion 4
@@ -76,15 +80,18 @@ class Laberinto{
                      x:6,
                      y:5
                  },
+                 solucion:"dllllluluuuuurrdrdldldrdrurdrurulurulur",
                  tablero:[[7,6,6,6,6,13,2],[5,4,8,7,8,10,8],[14,8,14,9,10,8,5],[5,10,9,1,7,9,5],[10,6,6,9,10,8,5],[7,8,7,8,7,9,5],[3,10,9,10,9,4,9]]
             }
      ]
-     let index=Math.floor(Math.random()*5)
+     let index=Math.floor(Math.random()*480)%4
+     index=0
      this.premio.x=opciones[index].premio.x
      this.premio.y=opciones[index].premio.y
      this.inicio.x=opciones[index].inicio.x
      this.inicio.y=opciones[index].inicio.y
      this.tablero=[...opciones[index].tablero]
+     this.solucion=opciones[index].solucion
     }
     rotate(){
         let rota=(Math.floor((Math.random()*3)+1)*90)
@@ -293,8 +300,6 @@ function winner(){
     if (w1===true) {
         if (nivel===3){
         audio.pause()
-        audio.src="./Audio/rainbows.mp3"
-        audio.play()
         }
         if (w2===true) {
             return "draw"
@@ -307,8 +312,6 @@ function winner(){
         if (w2===true) {
             if (nivel===3){
                 audio.pause()
-                audio.src="./Audio/rainbows.mp3"
-                audio.play()
                 }
             return "player2"
         }
@@ -321,6 +324,9 @@ function winner(){
 
 function update(){
 frames++
+if (mode===1){
+    movePC()    
+}
 lab.draw()
 pez.draw()
 p1.draw()
@@ -366,6 +372,7 @@ switch (winner()) {
         break;
     }
 }
+
 function modifAngulo(){
     switch (lab.angulo) {
         case 0:
@@ -384,9 +391,7 @@ function modifAngulo(){
 }
 function start(){
     if (interval) return
-    if (nivel===3) audio.src="./Audio/Misión imposible fail   canción flauta art. (320  kbps).mp3"
-    audio.play()
-    audio.loop=true
+    if (nivel===3) audio.play()
     ctx.restore()
     frames=0
     lab=new Laberinto()
@@ -399,9 +404,32 @@ function start(){
     p2.draw()
     pez.draw()
     interval=setInterval(update,1000/50)
+    
 }
 
-
+function movePC(){
+    if (frames%(50*(4-nivel))===0) {
+        let mov=frames/(50*(4-nivel))
+        switch (lab.solucion[mov-1]) {
+            case 'l':
+                p2.direccion='l'
+                p2.moveLeft()
+                break;
+            case 'u':
+                p2.direccion="u"
+                p2.moveUp()
+                break;
+            case 'r':
+                    p2.direccion="r"
+                    p2.moveRight()
+                break;
+            case 'd':
+                    p2.direccion="d"
+                    p2.moveDown()
+                    break;
+                }
+    }
+}
   document.addEventListener('keydown', ({ keyCode }) => {
     switch (keyCode) {
         case 37:
@@ -476,7 +504,17 @@ function start(){
         if (interval) return
         nivel=3;
         document.getElementById("nivel").innerText="Expert"
-      }
+    }
+    document.getElementById("single").onclick = function() {
+      if (interval) return
+      mode=1;
+      document.getElementById("modo").innerText="Single Player"
+    }
+    document.getElementById("multiplayer").onclick = function() {
+      if (interval) return
+      mode=2;
+      document.getElementById("modo").innerText="Multi-Player"
+    }
     
 
     let ini=new Image()
